@@ -44,7 +44,7 @@ vocoder = load_vocoder()
 # load models
 F5TTS_model_cfg = dict(dim=1024, depth=22, heads=16, ff_mult=2, text_dim=512, conv_layers=4)
 F5TTS_ema_model = load_model(
-    DiT, F5TTS_model_cfg, str(cached_path("hf://jpgallegoar/F5-Spanish/model_1200000.safetensors"))
+    DiT, F5TTS_model_cfg, str(cached_path("hf://cargabsj175/Brasileiro-F5/model_1200000.safetensors"))
 )
 
 chat_model_state = None
@@ -79,7 +79,7 @@ def traducir_numero_a_texto(texto):
     
     def reemplazar_numero(match):
         numero = match.group()
-        return num2words(int(numero), lang='es')
+        return num2words(int(numero), lang='pt')
 
     texto_traducido = re.sub(r'\b\d+\b', reemplazar_numero, texto_separado)
 
