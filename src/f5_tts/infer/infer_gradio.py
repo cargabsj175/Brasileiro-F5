@@ -79,7 +79,7 @@ def traducir_numero_a_texto(texto):
     
     def reemplazar_numero(match):
         numero = match.group()
-        return num2words(int(numero), lang='pt')
+        return num2words(int(numero), lang='pt_BR')
 
     texto_traducido = re.sub(r'\b\d+\b', reemplazar_numero, texto_separado)
 
@@ -133,9 +133,9 @@ with gr.Blocks() as app_credits:
     gr.Markdown("""
 # Créditos
 
-* [mrfakename](https://github.com/fakerybakery) por el [demo online original](https://huggingface.co/spaces/mrfakename/E2-F5-TTS)
-* [RootingInLoad](https://github.com/RootingInLoad) por la generación inicial de fragmentos y exploración de la aplicación de podcast
-* [jpgallegoar](https://github.com/jpgallegoar) por la generación de múltiples tipos de habla, chat de voz y afinación en español
+* [mrfakename](https://github.com/fakerybakery) pela [demonstração online original](https://huggingface.co/spaces/mrfakename/E2-F5-TTS)
+* [RootingInLoad](https://github.com/RootingInLoad) para geração inicial de snippets e exploração de aplicativos de podcast
+* [jpgallegoar](https://github.com/jpgallegoar) para gerar vários tipos de fala, bate-papo por voz e ajuste em espanhol
 """)
 
 
@@ -220,32 +220,32 @@ with gr.Blocks() as app_multistyle:
     # New section for multistyle generation
     gr.Markdown(
         """
-    # Generación de Múltiples Tipos de Habla
+    # Geração de múltiplos tipos de fala
 
-    Esta sección te permite generar múltiples tipos de habla o las voces de múltiples personas. Ingresa tu texto en el formato mostrado a continuación, y el sistema generará el habla utilizando el tipo apropiado. Si no se especifica, el modelo utilizará el tipo de habla regular. El tipo de habla actual se usará hasta que se especifique el siguiente tipo de habla.
-    """
+Esta seção permite que você gere vários tipos de discurso ou as vozes de várias pessoas. Digite seu texto no formato mostrado abaixo e o sistema gerará o discurso usando o tipo apropriado. Se não for especificado, o modelo usará o tipo de fala regular. O tipo de fala atual será usado até que o próximo tipo de fala seja especificado. 
+"""
     )
 
     with gr.Row():
         gr.Markdown(
             """
-            **Entrada de Ejemplo:**                                                                      
-            {Regular} Hola, me gustaría pedir un sándwich, por favor.                                                         
-            {Sorprendido} ¿Qué quieres decir con que no tienen pan?                                                                      
-            {Triste} Realmente quería un sándwich...                                                              
-            {Enojado} ¡Sabes qué, maldición a ti y a tu pequeña tienda!                                                                       
-            {Susurro} Solo volveré a casa y lloraré ahora.                                                                           
-            {Gritando} ¿Por qué yo?!                                                                         
+            **Exemplo de entrada:**
+{Regular} Olá, gostaria de pedir um sanduíche, por favor. 
+{Surpreso} O que você quer dizer com "eles não têm pão"? 
+{Triste} Eu realmente queria um sanduíche...
+{Angry} Sabe de uma coisa? Maldito seja você e sua lojinha! 
+{Sussurro} Vou para casa e choro agora. 
+{Gritando} Por que eu?!                                                                
             """
         )
 
         gr.Markdown(
             """
-            **Entrada de Ejemplo 2:**                                                                                
-            {Speaker1_Feliz} Hola, me gustaría pedir un sándwich, por favor.                                                            
-            {Speaker2_Regular} Lo siento, nos hemos quedado sin pan.                                                                                
-            {Speaker1_Triste} Realmente quería un sándwich...                                                                             
-            {Speaker2_Susurro} Te daré el último que estaba escondiendo.                                                                     
+            **Exemplo de entrada 2:**
+{Speaker1_Feliz} Olá, gostaria de pedir um sanduíche, por favor. 
+{Speaker2_Regular} Desculpe, estamos sem pão. 
+{Speaker1_Sad} Eu realmente queria um sanduíche...
+{Speaker2_Whisper} Vou te contar a última que eu estava escondendo.                                                               
             """
         )
 
@@ -487,12 +487,12 @@ with gr.Blocks() as app_multistyle:
 with gr.Blocks() as app_chat:
     gr.Markdown(
         """
-# Chat de Voz
-¡Mantén una conversación con una IA usando tu voz de referencia! 
-1. Sube un clip de audio de referencia y opcionalmente su transcripción.
-2. Carga el modelo de chat.
-3. Graba tu mensaje a través de tu micrófono.
-4. La IA responderá usando la voz de referencia.
+# Bate-papo por voz
+Converse com uma IA usando sua voz de referência!
+1. Carregue um clipe de áudio de referência e, opcionalmente, sua transcrição.
+2. Carregue o modelo de bate-papo.
+3. Grave sua mensagem pelo seu microfone.
+4. A IA responderá usando a voz de referência.
 """
     )
 
@@ -700,18 +700,18 @@ with gr.Blocks() as app_chat:
 with gr.Blocks() as app:
     gr.Markdown(
         """
-# Spanish-F5
+#Brasileiro-F5
 
-Esta es una interfaz web para F5 TTS, con un finetuning para poder hablar en castellano
+Esta é uma interface web para o F5 TTS, com ajustes finos para poder falar em português brasileiro.
 
-Implementación original:
-* [F5-TTS](https://arxiv.org/abs/2410.06885) (A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching)
+Implementação original:
+* [F5-TTS](https://arxiv.org/abs/2410.06885) (Um conto de fadas que simula uma fala fluente e fiel com correspondência de fluxo)
 
-El modelo sólo soporta el castellano.
+O modelo suporta apenas o português brasileiro.
 
-Para los mejores resultados, intenta convertir tu audio de referencia a WAV o MP3, asegurarte de que duren entre 11 y 14 segundos, que comiencen y acaben con entre medio segundo y un segundo de silencio, y a ser posible que acabe con el final de la frase.
+Para melhores resultados, tente converter seu áudio de referência para WAV ou MP3, certificando-se de que ele tenha entre 11 e 14 segundos de duração, comece e termine com meio segundo a um segundo de silêncio e, de preferência, termine com o final de uma frase.
 
-**NOTA: El texto de referencia será transcrito automáticamente con Whisper si no se proporciona. Para mejores resultados, mantén tus clips de referencia cortos (<15s). Asegúrate de que el audio esté completamente subido antes de generar. Se utiliza la librería num2words para convertir los números a palabras.**
+**OBSERVAÇÃO: O texto de referência será transcrito automaticamente com o Whisper se não for fornecido. Para melhores resultados, mantenha seus clipes de referência curtos (<15s). Certifique-se de que o áudio esteja totalmente alto antes de gerar. A biblioteca num2words é usada para converter números em palavras.**
 """
     )
     gr.TabbedInterface(
